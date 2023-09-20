@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Javascript training 004</title>
+    </head>
+    <body>
+        <h1>Entrainement javascript n°4</h1>
+        <p>Importer un fichier texte pour afficher son contenu sur la page</p>
+        <input id="inputFile" type="file" accept=".txt"/>
+        <div id="contentBox" ></div>
+
+        <script>
+            const inputFile = document.getElementById('inputFile'); 
+            const contentBox = document.getElementById('contentBox'); 
+            const reader = new FileReader(); 
+
+            inputFile.addEventListener('change', (e) => {
+                const file = e.target.files[0]; 
+
+                if (file) {
+                    reader.onload = (event) => {
+                        const fileContent = event.target.result; 
+                        contentBox.textContent = fileContent; 
+                    }
+                    reader.readAsText(file)
+                }
+            })
+
+        </script>
+    </body>
+</html>
